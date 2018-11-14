@@ -67,7 +67,9 @@ unsigned int hash(char *str, int max)
 HashTable *create_hash_table(int capacity)
 {
   HashTable *ht;
-
+  ht = malloc(sizeof(HashTable));
+  ht->capacity = capacity;
+  ht->storage = calloc(capacity, sizeof(LinkedPair));
   return ht;
 }
 
@@ -78,10 +80,11 @@ HashTable *create_hash_table(int capacity)
   added to the corresponding LinkedPair list.
 
   Inserting values to the same index with existing keys can overwrite
-  the value in th existing LinkedPair list.
+  the value in the existing LinkedPair list.
  ****/
 void hash_table_insert(HashTable *ht, char *key, char *value)
 {
+  unsigned int index = hash(key, ht->capacity);
 
 }
 
@@ -95,6 +98,7 @@ void hash_table_insert(HashTable *ht, char *key, char *value)
  ****/
 void hash_table_remove(HashTable *ht, char *key)
 {
+  unsigned int index = hash(key, ht->capacity);
 
 }
 
